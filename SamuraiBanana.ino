@@ -3,7 +3,6 @@
 #include "images.h"
 
 Arduboy2 arduboy;
-char strBuf[120];
 
 enum GameState {Splash, Title, BuildUp, Smash, Hold, Award, Victory} gameState = GameState::Splash;
 
@@ -41,9 +40,6 @@ void loop() {
 
 	arduboy.clear();
 	arduboy.pollButtons();
-
-	// sprintf(strBuf, "%d, %d, %d", gameMatchIndex, (int)gameState, frameCounter);
-	// Serial.println(strBuf);
 
 	switch (gameState) {
 		case GameState::Splash:
@@ -155,7 +151,7 @@ void AwardScreen() {
 		Sprites::drawSelfMasked(32, 0, bananaSamurai, 0);
 	} else {
 		arduboy.setCursor(10, 5);
-		arduboy.print("Loose");
+		arduboy.print("Lose");
 
 		Sprites::drawSelfMasked(32, 0, gameMatch[gameMatchIndex].enemyImage, 0);
 	}
